@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Client/TidyButMighty.Client.csproj" />
+  <Project Path="Api/TidyButMighty.Api.csproj" />
+</Solution>

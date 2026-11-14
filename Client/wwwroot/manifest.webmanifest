@@ -1,0 +1,21 @@
+{
+  "name": "Tidy but Mighty Cleaning Service",
+  "short_name": "Tidy but Mighty",
+  "description": "Reliable, detailed, and affordable residential & commercial cleaning in Cleveland, TN and surrounding areas.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#d81b60",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

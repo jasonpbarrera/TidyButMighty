@@ -1,0 +1,150 @@
+@inherits LayoutComponentBase
+
+<div class="top-bar">
+    <div class="container top-bar-inner">
+        <div class="top-bar-left">
+            <span>Cleveland, TN 37323 &bull; 15+ Years Experience</span>
+            <span>Always Open</span>
+        </div>
+        <div class="top-bar-right">
+            <a href="tel:+14233311730">(423) 331-1730</a>
+            <a href="mailto:tidybutmightycleaning@gmail.com">tidybutmightycleaning@gmail.com</a>
+        </div>
+    </div>
+</div>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="/" class="brand-link" @onclick="CloseMenu">
+            <img src="images/logo.jpg" alt="Tidy but Mighty Cleaning Service logo" class="brand-logo" width="50" height="50" />
+            <span class="brand-text">
+                <span class="brand-name">Tidy but Mighty</span>
+                <span class="brand-sub">Cleaning Service</span>
+            </span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Primary Navigation">
+            <NavLink href="/" Match="NavLinkMatch.All" class="nav-link">Home</NavLink>
+            <NavLink href="/services" class="nav-link">Services</NavLink>
+            <NavLink href="/about" class="nav-link">About</NavLink>
+            <NavLink href="/quote" class="nav-link">Free Estimate</NavLink>
+        </nav>
+
+        <div class="header-actions">
+            <a href="tel:+14233311730" class="btn btn-secondary btn-sm">Call (423) 331-1730</a>
+            <NavLink href="/quote" class="btn btn-primary btn-sm">Request Quote</NavLink>
+            <button type="button"
+                    class="mobile-menu-btn"
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="@_mobileMenuOpen"
+                    @onclick="ToggleMenu">
+                @(_mobileMenuOpen ? "✕" : "☰")
+            </button>
+        </div>
+    </div>
+
+    @if (_mobileMenuOpen)
+    {
+        <nav class="mobile-nav-drawer" aria-label="Mobile Navigation">
+            <NavLink href="/" Match="NavLinkMatch.All" class="nav-link" @onclick="CloseMenu">Home</NavLink>
+            <NavLink href="/services" class="nav-link" @onclick="CloseMenu">Services</NavLink>
+            <NavLink href="/about" class="nav-link" @onclick="CloseMenu">About</NavLink>
+            <NavLink href="/quote" class="nav-link" @onclick="CloseMenu">Free Estimate</NavLink>
+        </nav>
+    }
+</header>
+
+<main>
+    @Body
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="brand-text" style="margin-bottom: 0.75rem;">
+                    <span class="brand-name" style="color: #ffffff; font-size: 1.2rem;">Tidy but Mighty Cleaning Service</span>
+                    <span class="brand-sub" style="color: #f472b6;">Clean Spaces, Happier Places</span>
+                </div>
+                <p style="color: #d1d5db; font-size: 0.92rem; max-width: 36ch; margin: 0;">
+                    Reliable, detailed, and affordable residential and commercial cleaning with 15+ years of trusted experience.
+                </p>
+            </div>
+
+            <div>
+                <div class="footer-heading">Explore</div>
+                <ul class="footer-links">
+                    <li><NavLink href="/">Home</NavLink></li>
+                    <li><NavLink href="/services">Cleaning Services</NavLink></li>
+                    <li><NavLink href="/about">About Us</NavLink></li>
+                    <li><NavLink href="/quote">Request Free Estimate</NavLink></li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="footer-heading">Service Area</div>
+                <ul class="footer-links">
+                    <li>Cleveland, TN 37323</li>
+                    <li>Ooltewah &amp; Collegedale, TN</li>
+                    <li>Chattanooga, TN</li>
+                    <li>Athens &amp; Riceville, TN</li>
+                    <li>Dalton, GA</li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="footer-heading">Contact</div>
+                <ul class="footer-links">
+                    <li><a href="tel:+14233311730">(423) 331-1730</a></li>
+                    <li><a href="mailto:tidybutmightycleaning@gmail.com">tidybutmightycleaning@gmail.com</a></li>
+                    <li>
+                        <a href="https://www.facebook.com/people/Tidy-but-Mighty-Cleaning-Service/61552016452016/"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            Facebook Page
+                        </a>
+                    </li>
+                    <li>Hours: Always Open</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; @DateTime.UtcNow.Year Tidy but Mighty Cleaning Service. All rights reserved.</span>
+            <div class="footer-legal-links">
+                <NavLink href="/privacy">Privacy Policy</NavLink>
+                <NavLink href="/terms">Terms of Service</NavLink>
+            </div>
+            <span class="jb-attribution">
+                v@(_version) &middot; @(_buildDate) &middot; Powered by
+                <a href="https://jbdigitalservices.net" target="_blank" rel="noopener noreferrer">JB Digital Services</a>
+            </span>
+        </div>
+    </div>
+</footer>
+
+@code {
+    private bool _mobileMenuOpen;
+    private string _version = "1.0.0";
+    private string _buildDate = "Nov 14, 2026";
+
+    protected override void OnInitialized()
+    {
+        var asm = typeof(MainLayout).Assembly;
+        var ver = asm.GetName().Version;
+        if (ver is not null)
+        {
+            _version = $"{ver.Major}.{ver.Minor}.{ver.Build}";
+        }
+
+        var buildMeta = asm.GetCustomAttributes<AssemblyMetadataAttribute>()
+            .FirstOrDefault(a => a.Key == "BuildTimestamp")?.Value;
+        if (!string.IsNullOrWhiteSpace(buildMeta))
+        {
+            _buildDate = buildMeta;
+        }
+    }
+
+    private void ToggleMenu() => _mobileMenuOpen = !_mobileMenuOpen;
+    private void CloseMenu() => _mobileMenuOpen = false;
+}
