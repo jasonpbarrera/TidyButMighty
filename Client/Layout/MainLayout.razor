@@ -31,8 +31,8 @@
         </nav>
 
         <div class="header-actions">
-            <a href="tel:+14233311730" class="btn btn-secondary btn-sm">Call (423) 331-1730</a>
-            <NavLink href="/quote" class="btn btn-primary btn-sm">Request Quote</NavLink>
+            <a href="tel:+14233311730" class="btn btn-secondary btn-sm header-call-btn">Call (423) 331-1730</a>
+            <NavLink href="/quote" class="btn btn-primary btn-sm header-quote-btn">Request Quote</NavLink>
             <button type="button"
                     class="mobile-menu-btn"
                     aria-label="Toggle navigation menu"
@@ -50,6 +50,10 @@
             <NavLink href="/services" class="nav-link" @onclick="CloseMenu">Services</NavLink>
             <NavLink href="/about" class="nav-link" @onclick="CloseMenu">About</NavLink>
             <NavLink href="/quote" class="nav-link" @onclick="CloseMenu">Free Estimate</NavLink>
+            <div class="mobile-drawer-ctas">
+                <a href="tel:+14233311730" class="btn btn-secondary btn-sm" @onclick="CloseMenu">Call (423) 331-1730</a>
+                <NavLink href="/quote" class="btn btn-primary btn-sm" @onclick="CloseMenu">Request Quote</NavLink>
+            </div>
         </nav>
     }
 </header>
