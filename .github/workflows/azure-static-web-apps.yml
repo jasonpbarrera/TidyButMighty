@@ -54,8 +54,8 @@ jobs:
         run: |
           python3 -c '
           import json, urllib.request
-          domain = "https://tidybutmightycleaning.com"
-          host = "tidybutmightycleaning.com"
+          domain = "https://blue-stone-045cd4e0f.8.azurestaticapps.net"
+          host = "blue-stone-045cd4e0f.8.azurestaticapps.net"
           urls = [
               f"{domain}/",
               f"{domain}/services",

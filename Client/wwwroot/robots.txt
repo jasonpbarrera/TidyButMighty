@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tidybutmightycleaning.com/sitemap.xml
+Sitemap: https://blue-stone-045cd4e0f.8.azurestaticapps.net/sitemap.xml
