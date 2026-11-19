@@ -13,3 +13,5 @@ local.settings.json
 __pycache__/
 api_output/
 publish_output/
+.wrangler/
+.dev.vars
